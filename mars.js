@@ -1,19 +1,19 @@
 import * as THREE from 'three'
-import vertexShader from './shaders/vertex.glsl'
-import fragmentShader from './shaders/fragment.glsl'
+import vertexShader from './shaders/mars/vertex.glsl'
+import fragmentShader from './shaders/mars/fragment.glsl'
 import gsap from 'gsap'
-import atmosphereVertex from './shaders/atmosphereVertex.glsl'
-import atmosphereFragment from './shaders/atmosphereFragment.glsl'
+import atmosphereVertex from './shaders/mars/atmosphereVertex.glsl'
+import atmosphereFragment from './shaders/mars/atmosphereFragment.glsl'
 
-const canvasContainer = document.querySelector('#earthCanvas')
-console.log(canvasContainer)
-console.log(document.querySelector('canvas'))
+const canvasContainer = document.querySelector('#marsCanvas')
+
 const scene = new THREE.Scene()
 const camera = new THREE.PerspectiveCamera(75, canvasContainer.offsetWidth / canvasContainer.offsetHeight, 0.1, 1000)
 
 const renderer = new THREE.WebGLRenderer({
   antialias: true,
-  canvas: document.querySelector('#earthCanvas canvas')
+  canvas: document.querySelector('#marsCanvas canvas')
+  // canvas: canvasContainer
 })
 
 
@@ -32,7 +32,7 @@ const sphere = new THREE.Mesh
       fragmentShader,
       uniforms: {
         globeTexture: {
-          value: new THREE.TextureLoader().load('./img/earth.jpg')
+          value: new THREE.TextureLoader().load('./img/2k_mars.jpg')
           // value: new THREE.TextureLoader().load('./img/deathStar.png')
         }
       }

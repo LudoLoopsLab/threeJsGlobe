@@ -5,17 +5,22 @@ import gsap from 'gsap'
 import atmosphereVertex from './shaders/atmosphereVertex.glsl'
 import atmosphereFragment from './shaders/atmosphereFragment.glsl'
 
+const canvasContainer = document.querySelector('#canvasContainer')
 
 const scene = new THREE.Scene()
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+const camera = new THREE.PerspectiveCamera(75, canvasContainer.offsetWidth / canvasContainer.offsetHeight, 0.1, 1000)
 
 const renderer = new THREE.WebGLRenderer({
-  antialias: true
+  antialias: true,
+  canvas: document.querySelector('canvas')
 })
 
-renderer.setSize(window.innerWidth, window.innerHeight)
+
+
+
+
+renderer.setSize(canvasContainer.offsetWidth, canvasContainer.offsetHeight)
 renderer.setPixelRatio(window.devicePixelRatio)
-document.body.appendChild(renderer.domElement)
 
 
 // crate a sphere
@@ -32,7 +37,7 @@ const sphere = new THREE.Mesh
       }
     })
   )
-// scene.add(sphere)
+
 
 // create atmosphere
 const atmosphere = new THREE.Mesh
@@ -68,7 +73,7 @@ for (let i = 0;i < 10000;i++) {
   starVertices.push(x, y, z)
 }
 
-console.log(starVertices)
+
 StarGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3))
 
 const stars = new THREE.Points(StarGeometry, starMaterial)

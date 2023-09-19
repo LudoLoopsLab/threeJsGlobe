@@ -20,8 +20,8 @@ const sphere = new THREE.Mesh
       fragmentShader,
       uniforms: {
         globeTexture: {
-          // value: new THREE.TextureLoader().load('./img/earth.jpg')
-          value: new THREE.TextureLoader().load('./img/deathStar.png')
+          value: new THREE.TextureLoader().load('./img/earth.jpg')
+          // value: new THREE.TextureLoader().load('./img/deathStar.png')
         }
       }
     })
